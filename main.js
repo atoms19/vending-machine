@@ -62,9 +62,10 @@ function Purchase(r) {
       d.div({ class: "center" }, d.button({ class: "btn blue" }, "buy now ").on('click',()=>{
         fetch(`http://${localStorage.getItem('ip')}/dispense?slot=${slotnum}`,{
             method:'GET',
-            cors: {
-                mode:'no-cors'
-            }
+            mode:'no-cors',
+            headers: {
+               'Access-Control-Allow-Origin': '*'
+           }
         })
       .then(res => {
          if(res.status == 200){
